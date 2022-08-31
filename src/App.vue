@@ -39,8 +39,14 @@ export default {
   },
   methods: {
     fetchWeather (e) {
+      const options = {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json'
+      },
+      }
       if(e.key == "Enter"){
-        fetch(`${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}&lang=pt_br`)
+        fetch(`${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}&lang=pt_br`,options)
         .then(res => {
           return res.json();
         }).then(this.setResults);
